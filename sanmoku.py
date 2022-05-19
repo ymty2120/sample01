@@ -93,6 +93,7 @@ def firstAction():
 #後攻行動
 #######################################################
 def secondAction():
+    global e
     rN = random.randint(1, 10)
     if rN >= 2:
         canvas.create_line(740, 320, 890, 470, fill='red', tag='〇×')
@@ -103,7 +104,7 @@ def secondAction():
 #######################################################
 
 
-#行動パターン1
+#行動パターン
 #######################################################
 def actionPattern():
 #パターンa
@@ -257,15 +258,10 @@ def randomAction():
         canvas.create_line(970, 550, 1120, 700, fill='red', tag='〇×')
         canvas.create_line(1120, 550, 970, 700, fill='red', tag='〇×')
         i = 2
+    elif a >=1 and b >= 1 and c >= 1 and d >=1 and e >= 1 and f >= 1 and g >=1 and h >= 1 and i >= 1:
+        pass
     else:
-        reRandomAction()
-#######################################################
-
-
-#ランダム行動再帰
-#######################################################
-def reRandomAction():
-    randomAction()
+        randomAction()
 #######################################################
 
 
@@ -425,10 +421,9 @@ def funcWL():
         canvasReset()
 #引き分け
     elif a >= 1 and b >= 1 and c >= 1 and d >= 1 and e >= 1 and f >= 1 and g >= 1 and h >= 1 and i >= 1:
-        if not (a == 1 and b == 1 and c == 1 or a == 1 and d == 1 and g == 1 or a == 1 and e == 1 and i == 1 or b == 1 and e == 1 and h == 1 or c == 1 and f == 1 and i == 1 or c == 1 and e == 1 and g == 1 or d == 1 and e == 1 and f == 1 or g == 1 and h == 1 and i == 1 and a == 2 and b == 2 and c == 2 or a == 2 and d == 2 and g == 2 or a == 2 and e == 2 and i == 2 or b == 2 and e == 2 and h == 2 or c == 2 and f == 2 and i == 2 or c == 2 and e == 2 and g == 2 or d == 2 and e == 2 and f == 2 or g == 2 and h == 2 and i == 2):
-            print('DRAW')
-            draw += 1
-            canvasReset()
+        print('DRAW')
+        draw += 1
+        canvasReset()
 #######################################################
 
 
@@ -436,6 +431,17 @@ def funcWL():
 #######################################################
 def countWL(event):
     print(f'WIN:{win}  LOSE:{lose}  DRAW:{draw}')
+#######################################################
+
+
+#戦績リセット
+#######################################################
+def countReset(event):
+    global win, lose, draw
+    win = 0
+    lose = 0
+    draw = 0
+    print(f'戦績がリセットされました')
 #######################################################
 
 
@@ -514,32 +520,47 @@ def start(event):
 #######################################################
 
 
-#勝敗カウント
+#戦績ボタン
 #######################################################
 button_countWL = tkinter.Button(root, text='戦績',width=15)
 button_countWL.bind('<Button-1>',countWL)
-button_countWL.place(x=150,y=550)
+button_countWL.place(x=50,y=500)
 #######################################################
 
 
-#リセット
+#戦績リセットボタン
+#######################################################
+button_countWL = tkinter.Button(root, text='戦績リセット',width=15)
+button_countWL.bind('<Button-1>',countReset)
+button_countWL.place(x=250,y=500)
+#######################################################
+
+
+#リセットボタン
 #######################################################
 button_drawR = tkinter.Button(root, text='リセット',width=15)
 button_drawR.bind('<Button-1>',reset)
-button_drawR.place(x=350,y=350)
+button_drawR.place(x=250,y=300)
 #######################################################
 
 
-#スタート
+#スタートボタン
 #######################################################
 button_drawS = tkinter.Button(root, text='スタート',width=15)
 button_drawS.bind('<Button-1>',start)
-button_drawS.place(x=150,y=350)
+button_drawS.place(x=50,y=300)
 #######################################################
 
 
-#
-# GUIの末端
-#
+#説明
+#######################################################
+print('最初の１回目はスタートボタンを押してください')
+print('先行後攻はランダムに決まります')
+#######################################################
+
+
+#ループ
+#######################################################
 root.mainloop()
+#######################################################
 
