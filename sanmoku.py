@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import tkinter
@@ -401,7 +401,8 @@ def draw33(event):
 #リセット
 #######################################################
 def reset(event):
-    canvasReset()
+    if ForS == 1:
+        canvasReset()
 #######################################################
 
 
