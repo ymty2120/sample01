@@ -95,7 +95,7 @@ def firstAction():
 def secondAction():
     global e
     rN = random.randint(1, 10)
-    if rN >= 2:
+    if rN >= 2 and e == 0:
         canvas.create_line(740, 320, 890, 470, fill='red', tag='〇×')
         canvas.create_line(890, 320, 740, 470, fill='red', tag='〇×')
         e = 2
